@@ -1,3 +1,5 @@
+const { response } = require("express");
+
 var data = {
   rsvp: ['ixd@ucsd.edu']
 };
@@ -8,3 +10,13 @@ var data = {
 exports.adminView = function(request, response){
   response.render('rsvp', data);
 };
+
+exports.addRSVP = function(req, res) {
+  var rsvpEmail = req.body.rsvpEmail;
+
+  console.log(rsvpEmail);
+
+  data.rsvp.push(rsvpEmail);
+
+  res.send(rsvpEmail);
+}
